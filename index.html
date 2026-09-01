@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Greenroom — live show desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><div class="logo">G</div> GREENROOM</div>
+      <div class="show-meta">The Shop Floor · <strong id="ep-title">Ep. 47</strong></div>
+      <div class="spacer"></div>
+      <div class="webmcp-pill" id="webmcp-pill">WebMCP: checking</div>
+      <div class="tally"><span class="dot"></span> LIVE</div>
+      <div class="clock" id="clock">00:00</div>
+    </header>
+    <main class="workspace">
+      <section class="col">
+        <div class="col-head"><h2>Rundown</h2><span>48:00 board</span></div>
+        <div id="rundown"></div>
+      </section>
+      <section class="col stage">
+        <div class="hero">
+          <h1>Producer + agent, same desk.</h1>
+          <p>The agent fact-checks against the Show Bible — not the open web. Corrections wait for you before they touch the host.</p>
+          <div class="people">
+            <div class="person">
+              <div class="role">Host</div>
+              <div class="name" id="host-name">Lena Cruz</div>
+              <div class="note">On comms · IFB live</div>
+            </div>
+            <div class="person">
+              <div class="role">Guest</div>
+              <div class="name" id="guest-name">Maya Chen</div>
+              <div class="note" id="guest-note"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Show Bible · confirmed numbers</h3>
+            <div id="facts"></div>
+          </div>
+          <div class="card">
+            <h3>Producer queue</h3>
+            <div id="queue"></div>
+          </div>
+        </div>
+      </section>
+      <section class="col agent-col">
+        <div class="col-head"><h2>Agent desk</h2><span id="queue-count">0 waiting</span></div>
+        <div class="prompt-box">
+          <label>Heard on air / draft a check</label>
+          <textarea id="agent-prompt" placeholder="Paste a claim the guest just made…"></textarea>
+          <div class="row-btns">
+            <button class="primary" id="run-btn">Check against bible</button>
+            <button id="demo-btn">Run the live example</button>
+          </div>
+        </div>
+        <div class="tools-box">
+          <label>WebMCP tools on this page</label>
+          <div class="note-row" style="border:1px solid var(--line);border-radius:8px;color:var(--muted)">
+            get_show_state · search_show_bible · fact_check_claim · lookup_guest · get_sponsor_read · queue_correction · hold_for_producer · add_rundown_note · mark_segment
+          </div>
+        </div>
+        <div class="log" id="tool-log">Waiting for a tool call.</div>
+      </section>
+    </main>
+    <footer class="statusbar">
+      <span>clock <b id="footer-clock">00:00</b></span>
+      <span>last tool <b id="last-tool">—</b></span>
+      <span>webmcp <b id="webmcp-status">starting</b></span>
+      <span>grounding <b>Show Bible only</b></span>
+    </footer>
+  </div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
